@@ -1,0 +1,10 @@
+/db
+/phpmyadmin
+/vendor
+/node_modules
+.env
+.env.*
+/storage/*.key
+/storage/framework
+/storage/logs
+/bootstrap/cache
