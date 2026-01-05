@@ -5,6 +5,12 @@ services:
     build: .
     volumes:
       - ./src:/var/www
+    command: >
+      sh -c "
+      chown -R www-data:www-data /var/www/workProject/storage /var/www/workProject/bootstrap/cache &&
+      chmod -R 775 /var/www/workProject/storage /var/www/workProject/bootstrap/cache &&
+      php-fpm
+      "
 
   nginx:
     image: nginx:latest
