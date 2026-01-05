@@ -19,32 +19,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}">ホーム</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('movies.index') }}">映画一覧</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('movies.create') }}">映画を追加</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    @auth
-                        <li class="nav-item">
-                            <span class="navbar-text me-3">ようこそ、{{ Auth::user()->name }}さん</span>
-                        </li>
-                        <li class="nav-item">
-                            <form method="POST" action="{{ route('logout') }}" class="d-inline">
-                                @csrf
-                                <button type="submit" class="btn btn-outline-light">ログアウト</button>
-                            </form>
-                        </li>
-                    @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">ログイン</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">会員登録</a>
-                        </li>
-                    @endauth
                 </ul>
             </div>
         </div>
