@@ -19,7 +19,7 @@ class MovieController extends Controller
     }
     public function create()
     {
-        return view('index');
+        return redirect()->route('movies.index')->with('message', '映画追加しました');
     }
     public function showEditForm(Movie $movie)
     {
