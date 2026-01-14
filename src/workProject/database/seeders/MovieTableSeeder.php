@@ -37,7 +37,7 @@ class MovieTableSeeder extends Seeder
             DB::table('movies')->insert([
                 'title' => $genre,
                 'genre' => $genre,
-                'release_year' => 1997,
+                'release_year' => 1997_02,
                 'image' => null,
                 'rating' => 0,
                 'user_id' => $user->id,

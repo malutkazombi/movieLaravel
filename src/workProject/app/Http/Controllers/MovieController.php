@@ -17,9 +17,28 @@ class MovieController extends Controller
     {
         return view('movies.create');
     }
-    public function create()
+    /**
+     *  【フォルダの作成機能】
+     *
+     *  POST /movies/create
+     *  @param Request $request （リクエストクラスの$request）
+     *  @return \Illuminate\Http\RedirectResponse
+     */
+    public function create(Request $request)
     {
-        return redirect()->route('movies.index')->with('message', '映画追加しました');
+        $movie = new Movie();
+        $movie->title = $request->title;
+        $movie->genre = $request->genre;
+        $movie->release_year = $request->release_year;
+        $movie->rating = $request->rating;
+        //テスト用
+        $movie->user_id = 1;
+        //
+        $movie->save();
+
+        return redirect()->route('movies.index', [
+            'id' => $movie->id,
+        ]);
     }
     public function showEditForm(Movie $movie)
     {
