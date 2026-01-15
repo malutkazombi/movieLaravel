@@ -16,7 +16,7 @@ use App\Http\Controllers\MovieController;
 
 Route::get('/home', [HomeController::class, "index"])->name('home');
 Route::get('/', [HomeController::class, "index"])->name('home');
-Route::get("movies", [MovieController::class, "index"])->name("movies.index");
+Route::get("movies", [MovieController::class, "index"])->name("index");
 Route::get('movies/create', [MovieController::class, "showCreateForm"])->name('movies.create');
 Route::post('movies/create', [MovieController::class, "create"]);
 Route::get('movies/{movie}/edit', [MovieController::class, "showEditForm"])->name('movies.edit');
