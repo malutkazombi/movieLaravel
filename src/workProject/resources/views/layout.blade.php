@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', '映画管理システム')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        .card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+        }
+    </style>
     @yield('styles')
 </head>
 <body>
@@ -18,6 +28,12 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}">ホーム</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('movies.index') }}">映画一覧</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('movies.create') }}">映画を追加</a>
                     </li>
                 </ul>
             </div>
