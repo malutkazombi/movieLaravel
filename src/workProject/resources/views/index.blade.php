@@ -1,6 +1,9 @@
 @extends('layout')
 
 @section('title', 'ホーム')
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+@endsection
 
 @section('content')
 <section class="mb-5">
@@ -89,11 +92,3 @@
 @endif
 @endsection
 
-@section('styles')
-<style>
-    dt {
-        font-weight: 600;
-        color: #6c757d;
-    }
-</style>
-@endsection

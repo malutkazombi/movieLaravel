@@ -1,6 +1,9 @@
 @extends('layout')
 
 @section('title', 'ホーム')
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/movies.css') }}">
+@endsection
 
 @section('content')
 <div class="col col-md-offset-3 col-md-6">
@@ -41,7 +44,7 @@
             <div class="d-flex justify-content-between mt-1">
               @for($i = 0; $i <= 10; $i++)
                 <span class="text-muted" style="font-size: 0.7rem;">{{ $i }}</span>
-              @endfor
+                @endfor
             </div>
           </div>
         </div>
@@ -54,52 +57,6 @@
 </div>
 @endsection
 
-@section('styles')
-<style>
-  .rating-slider-container {
-    padding: 1rem 0;
-  }
-
-  .form-range {
-    width: 100%;
-    height: 1rem;
-    cursor: pointer;
-  }
-
-  .form-range::-webkit-slider-thumb {
-    width: 1.25rem;
-    height: 1.25rem;
-    background-color: #0d6efd;
-    border: 2px solid #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  }
-
-  .form-range::-moz-range-thumb {
-    width: 1.25rem;
-    height: 1.25rem;
-    background-color: #0d6efd;
-    border: 2px solid #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  }
-
-  #rating-value {
-    font-size: 1.2em;
-    font-weight: bold;
-  }
-</style>
-@endsection
-
 @section('scripts')
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const ratingSlider = document.getElementById('rating');
-    const ratingValue = document.getElementById('rating-value');
-
-    ratingSlider.addEventListener('input', function() {
-      ratingValue.textContent = this.value;
-    });
-
-    ratingValue.textContent = ratingSlider.value;
-  });
-</script>
+<script src="{{ asset('js/movies.js') }}"></script>
 @endsection

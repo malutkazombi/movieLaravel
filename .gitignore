@@ -9,3 +9,4 @@
 /storage/logs
 /bootstrap/cache
 /.vscode
+/src/workProject/package-lock.json
