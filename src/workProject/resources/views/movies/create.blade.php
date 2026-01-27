@@ -10,11 +10,17 @@
   <nav class="panel panel-default">
     <div class="panel-heading">映画を追加する</div>
     <div class="panel-body">
-      <form action="{{ route('movies.create') }}" method="post">
+      <form action="{{ route('movies.create') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
           <label for="title">映画名</label>
           <input type="text" class="form-control" name="title" id="title" />
+          <label for="image">映画ポスター</label>
+          <input type="file"
+            class="form-control"
+            name="image"
+            id="image"
+            accept="image/*">
           <label for="genre">映画ジャンル</label>
           <select class="form-control" name="genre" id="genre">
             <option value="">選択してください</option>

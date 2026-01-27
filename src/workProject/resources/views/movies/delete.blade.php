@@ -26,6 +26,15 @@
         <div class="card-body">
           <h5 class="card-title mb-3">削除する映画の情報</h5>
           <dl class="row mb-0">
+            @if($movie->image)
+            <div class="mb-3 text-center">
+              <img src="{{ asset('storage/' . $movie->image) }}" alt="{{ $movie->title }}のポスター" class="img-thumbnail" style="max-height: 200px; object-fit: cover;">
+            </div>
+            @else
+            <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 300px;">
+              <i class="bi bi-image text-white" style="font-size: 3rem;"></i>
+            </div>
+            @endif
             <dt class="col-sm-4">映画名</dt>
             <dd class="col-sm-8"><strong>{{ $movie->title }}</strong></dd>
 

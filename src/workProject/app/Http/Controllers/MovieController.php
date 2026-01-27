@@ -37,7 +37,12 @@ class MovieController extends Controller
         $movie->rating = $request->rating;
         //テスト用
         $movie->user_id = 1;
-        //
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('images', $imageName, 'public');
+            $movie->image = $imagePath;
+        }
         $movie->save();
 
         return redirect()->route('movies.index', [
@@ -58,7 +63,15 @@ class MovieController extends Controller
         $movie->rating = $request->rating;
         //テスト用
         $movie->user_id = 1;
-        //
+        if ($request->hasFile('image')) {
+            if ($movie->image) {
+                Storage::disk('public')->delete($movie->image);
+            }
+            $image = $request->file('image');
+            $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('images', $imageName, 'public');
+            $movie->image = $imagePath;
+        }
         $movie->save();
         return redirect()->route('movies.index');
     }
@@ -70,6 +83,9 @@ class MovieController extends Controller
     }
     public function delete(Movie $movie)
     {
+        if ($movie->image) {
+            Storage::disk('public')->delete($movie->image);
+        }
         $movie->delete();
 
         return redirect()->route('movies.index');

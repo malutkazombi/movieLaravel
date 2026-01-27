@@ -38,7 +38,7 @@
         <article class="col-md-6 col-lg-4">
             <div class="card h-100 shadow-sm">
                 @if($movie->image)
-                <img src="{{ $movie->image }}" alt="{{ $movie->title }}のポスター" class="card-img-top" style="height: 300px; object-fit: cover;">
+                <img src="{{ asset('storage/' . $movie->image) }}" alt="{{ $movie->title }}のポスター" class="card-img-top" style="height: 300px; object-fit: cover;">
                 @else
                 <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" style="height: 300px;">
                     <i class="bi bi-image text-white" style="font-size: 3rem;"></i>
