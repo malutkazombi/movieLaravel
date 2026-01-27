@@ -50,16 +50,28 @@ class MovieController extends Controller
             'movie' => $movie,
         ]);
     }
-    public function edit()
+    public function edit(Request $request, Movie $movie)
     {
-        return view('index');
+        $movie->title = $request->title;
+        $movie->genre = $request->genre;
+        $movie->release_year = $request->release_year;
+        $movie->rating = $request->rating;
+        //テスト用
+        $movie->user_id = 1;
+        //
+        $movie->save();
+        return redirect()->route('movies.index');
     }
-    public function showDeleteForm()
+    public function showDeleteForm(Movie $movie)
     {
-        return view('index');
+        return view('movies.delete', [
+            'movie' => $movie,
+        ]);
     }
-    public function delete()
+    public function delete(Movie $movie)
     {
-        return view('index');
+        $movie->delete();
+
+        return redirect()->route('movies.index');
     }
 }
