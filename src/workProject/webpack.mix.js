@@ -15,3 +15,12 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
+
+mix.js('resources/js/movies.js', 'public/js')
+    .postCss('resources/css/movies.css', 'public/css', [
+        //
+    ]);
+
+mix.postCss('resources/css/index.css', 'public/css', [
+    //
+]);

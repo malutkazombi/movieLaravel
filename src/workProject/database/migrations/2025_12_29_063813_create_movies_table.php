@@ -17,7 +17,7 @@ class CreateMoviesTable extends Migration
             $table->increments('id');
             $table->string('title', 100);
             $table->enum('genre', ['action', 'comedy', 'drama', 'horror', 'sci-fi', 'thriller', 'romance', 'animation']);
-            $table->year('release_year');
+            $table->string('release_year', 7);
             $table->string('image')->nullable();
             $table->unsignedTinyInteger('rating')->default(0);
             $table->unsignedBigInteger('user_id');
