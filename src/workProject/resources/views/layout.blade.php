@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @yield('styles')
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -54,7 +55,10 @@
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#" id="logout">
-                                    <i class="bi bi-box-arrow-right"></i> ログアウト
+                                    <form class="bi bi-box-arrow-right" action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <input type="submit" value="ログアウト"/>
+                                    </form>
                                 </a>
                             </li>
                         </ul>
@@ -106,4 +110,5 @@
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
 </body>
+
 </html>
