@@ -4,15 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Movie;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $movies = Movie::all();
-
-        return view('index', [
-            'movies' => $movies,
-        ]);
+        return redirect()->route('movies.index');
     }
 }

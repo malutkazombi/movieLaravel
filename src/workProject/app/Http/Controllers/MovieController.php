@@ -11,7 +11,7 @@ class MovieController extends Controller
 {
     public function index()
     {
-        $movies = Movie::all();
+        $movies = Movie::where('user_id', Auth::id())->get();
 
         return view('index', [
             'movies' => $movies,
@@ -35,8 +35,7 @@ class MovieController extends Controller
         $movie->genre = $request->genre;
         $movie->release_year = $request->release_year;
         $movie->rating = $request->rating;
-        //テスト用
-        $movie->user_id = 1;
+        $movie->user_id = Auth::id();
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
@@ -51,18 +50,24 @@ class MovieController extends Controller
     }
     public function showEditForm(Movie $movie)
     {
+        if ($movie->user_id !== Auth::id()) {
+            abort(403, 'この映画にアクセスする権限がありません');
+        }
+
         return view('movies.edit', [
             'movie' => $movie,
         ]);
     }
     public function edit(Request $request, Movie $movie)
     {
+        if ($movie->user_id !== Auth::id()) {
+            abort(403, 'この映画にアクセスする権限がありません');
+        }
+
         $movie->title = $request->title;
         $movie->genre = $request->genre;
         $movie->release_year = $request->release_year;
         $movie->rating = $request->rating;
-        //テスト用
-        $movie->user_id = 1;
         if ($request->hasFile('image')) {
             if ($movie->image) {
                 Storage::disk('public')->delete($movie->image);
@@ -77,12 +82,20 @@ class MovieController extends Controller
     }
     public function showDeleteForm(Movie $movie)
     {
+        if ($movie->user_id !== Auth::id()) {
+            abort(403, 'この映画にアクセスする権限がありません');
+        }
+
         return view('movies.delete', [
             'movie' => $movie,
         ]);
     }
     public function delete(Movie $movie)
     {
+        if ($movie->user_id !== Auth::id()) {
+            abort(403, 'この映画にアクセスする権限がありません');
+        }
+
         if ($movie->image) {
             Storage::disk('public')->delete($movie->image);
         }
